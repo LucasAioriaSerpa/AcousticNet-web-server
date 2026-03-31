@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  frontend:
+    image: nginx:1.18-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - backend
+    networks:
+      - web
+
+  backend:
+    build: ./backend
+    expose:
+      - "5000"
+    volumes:
+      - sqlite_data:/app/data
+    networks:
+      - web
+      - db
+
+volumes:
+  sqlite_data:
+
+networks:
+  web:
+  db:
