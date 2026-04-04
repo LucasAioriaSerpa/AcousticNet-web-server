@@ -10,11 +10,13 @@ def init_db():
     connection = sqlite3.connect(DB_PATH)
     connection.execute("""
         CREATE TABLE IF NOT EXISTS mensagens (
-            id INTEEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
             texto TEXT NOT NULL
         )
     """)
-    connection.execute("INSERT INTO mensagens (texto) VALUES ('Hello World do SQLite!')")
+    cursor = connection.execute("SELECT COUNT(*) FROM mensagens")
+    if cursor.fetchone()[0] == 0:
+        connection.execute("INSERT INTO mensagens (texto) VALUES ('Hello World do SQLite!')")
     connection.commit()
     connection.close()
 
