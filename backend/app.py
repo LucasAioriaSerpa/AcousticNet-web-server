@@ -1,12 +1,14 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, Response
 import sqlite3
+import json
 import os
 
 app = Flask(__name__)
 DB_PATH = "/app/data/acousticnet.db"
 
 def init_db():
-    os.makedirs("/app/data", exist_ok=True)
+    if not os.path.exists("/app/data"):
+        os.makedirs("/app/data")
     connection = sqlite3.connect(DB_PATH)
     connection.execute("""
         CREATE TABLE IF NOT EXISTS mensagens (
@@ -26,11 +28,12 @@ def hello():
     cursor = connection.execute("SELECT texto FROM mensagens LIMIT 1")
     row = cursor.fetchone()
     connection.close()
-    return jsonify({
+    data = json.dumps({
         "frontend": "ok",
         "backend": "ok",
         "banco": row[0] if row else "vazio"
     })
+    return Response(data, mimetype='application/json')
 
 if __name__ == '__main__':
     init_db()
