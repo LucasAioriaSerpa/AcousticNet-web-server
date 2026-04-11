@@ -1,0 +1,16 @@
+:root {
+  --cor-primaria: #181818;
+  --cor-secundaria: #f3f3f3;
+  --cor-fundo: #161616;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--cor-fundo);
+  color: var(--cor-secundaria);
+}
