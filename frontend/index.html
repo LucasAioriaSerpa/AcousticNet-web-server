@@ -13,7 +13,7 @@
       <p id="status_backend">Status: Consultando backend...</p>
       <pre id="resposta"></pre>
     </div>
-    <script>
+    <!-- <script>
       fetch("/api/hello")
         .then((response) => {
           if (!response.ok) {
@@ -33,7 +33,19 @@
           document.getElementById("resposta").textContent = error.message;
           console.error("Fetch error: ", error.message);
         });
-    </script>
+    </script> -->
     <!-- <script src="main.js"></script> -->
   </body>
+  <script>
+    fetch("/api/hello")
+      .then((response) => {
+	if (!response.ok) {
+	  document.getElementById("status_backend").textContent = `Status: ${response.status}`;
+	  throw new Error("HTTP error!");
+	}
+      })
+      .then((data) => {
+	document.getElementById("resposta").textContent = JSON.stringify( data, null, 2, );
+      });
+  </script>
 </html>
