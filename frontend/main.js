@@ -5,6 +5,7 @@ fetch("/api/hello")
         `Status: ${response.status}`;
       throw new Error("HTTP error!");
     }
+    response.json();
   })
   .then((data) => {
     document.getElementById("resposta").textContent = JSON.stringify(
