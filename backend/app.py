@@ -22,6 +22,22 @@ def init_db():
     connection.commit()
     connection.close()
 
+app.logger.debug("debug log!")
+
+@app.errorhandler(404)
+def page_not_found(erro):
+    return f"Page doesn't exist!\nErro {erro}", 404    
+
+@app.route("/api/")
+def api():
+    data = json.dumps({
+        "message:": "hiiii this is API route..",
+        "routes:": ["/api (this one)",
+                    "/api/hello - test 'hello world'",
+                    "/api/health - check the literal health of the system :v"]
+    })
+    return Response(data, mimetype='application/json'), 200
+
 @app.route("/api/hello")
 def hello():
     connection = sqlite3.connect(DB_PATH)
@@ -34,6 +50,13 @@ def hello():
         "banco": row[0] if row else "vazio"
     })
     return Response(data, mimetype='application/json')
+
+@app.route("/api/health")
+def health():
+    data = json.dumps({
+        "status": "ok"
+    })
+    return Response(data, mimetype="application/json"), 200
 
 if __name__ == '__main__':
     init_db()
