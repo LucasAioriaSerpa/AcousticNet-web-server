@@ -44,9 +44,20 @@ async function fetchData() {
     if (!response.ok) {
       throw new Error(`HTTP error!\n Status: ${response.status}`);
     }
+
     const data = await response.json();
-    console.log(data);
+
+    document.getElementById("status_backend").textContent = "Status: Conectado ao backend";
+    document.getElementById("resposta").textContent = JSON.stringify(data, null, 2);
+
+    console.log("Dados recebida:", data);
+
   } catch (error) {
+    document.getElementById("status_backend").textContent = "Status: Falha na conexão.";
+    document.getElementById("resposta").textContent = error.message;
     console.error(`Fetch error:`, error);
   }
 }
+
+fetchData();
+
