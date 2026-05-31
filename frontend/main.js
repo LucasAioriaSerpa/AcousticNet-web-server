@@ -1,63 +1,37 @@
-// fetch("/api/hello")
-//   .then((response) => {
-//     if (!response.ok) {
-//       document.getElementById("status_backend").textContent =
-//         `Status: ${response.status}`;
-//       throw new Error("HTTP error!");
-//     }
-//     response.json();
-//   })
-//   .then((data) => {
-//     document.getElementById("resposta").textContent = JSON.stringify(
-//       data,
-//       null,
-//       2,
-//     );
-//   })
-//   .catch((error) => {
-//     document.getElementById("resposta").textContent = error.message;
-//     console.error("Fetch error: ", error.message);
-//   });
-
-// async function fetchData() {
-//   try {
-//     const response = await fetch('https://api.example.com/data');
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! status: ${response.status}`);
-//     }
-//     const data = await response.json();
-//     console.log(data);
-//   } catch (error) {
-//     console.error('Fetch error:', error);
-//   }
-// }
-
 const routes = {
   api: "/api/",
   hello: "/api/hello",
   health: "/api/health",
 };
 
-async function fetchData() {
+async function fetchData(pathAPI) {
   try {
-    const response = await fetch("/api/hello");
+    const response = await fetch(pathAPI);
     if (!response.ok) {
       throw new Error(`HTTP error!\n Status: ${response.status}`);
     }
-
     const data = await response.json();
-
-    document.getElementById("status_backend").textContent = "Status: Conectado ao backend";
-    document.getElementById("resposta").textContent = JSON.stringify(data, null, 2);
-
-    console.log("Dados recebida:", data);
-
+    return data;
   } catch (error) {
-    document.getElementById("status_backend").textContent = "Status: Falha na conexão.";
-    document.getElementById("resposta").textContent = error.message;
     console.error(`Fetch error:`, error);
+    return error;
   }
 }
 
-fetchData();
+async function fetchHelloWorld() {
+	try{
+		const data = await fetchData(routes[hello]);
+		document.getElementById("status_backend").textContent = "Status: Conectado ao backend";
+		document.getElementById("resposta").textContent = JSON.stringify(data, null, 2);
+		console.log("Dados recebida:", data);
+	} catch (error) {
+		document.getElementById("status_backend").textContent = "Status: Falha na conexão.";
+		document.getElementById("resposta").textContent = error.message;
+		console.erro(`Fetch error:`, error);
+	}
+}
+
+fetchData(routes[api]);
+fetchData(routes[health]);
+fetchHelloWorld();
 
