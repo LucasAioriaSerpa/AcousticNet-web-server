@@ -71,6 +71,6 @@ async function updateGraph() {
   graph.update();
 }
 
-fetchHelloWorld();
+////fetchHelloWorld();
 updateGraph();
 setInterval(updateGraph, 3000); //? Atualiza a cada 3 segundos...
