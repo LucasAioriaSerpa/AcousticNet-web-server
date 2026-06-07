@@ -19,14 +19,14 @@ app.register_blueprint(decibels_bp)
 @app.errorhandler(404)
 def not_found(e):
     return Response(
-        json.dumps({"error": "route not found", "status": 404}),
+        json.dumps({"error": ["route not found", e], "status": 404}),
         mimetype="application/json"
     ), 404
 
 @app.errorhandler(405)
 def method_not_allowed(e):
     return Response(
-        json.dumps({"error": "method not allowed", "status": 405}),
+        json.dumps({"error": ["method not allowed", e], "status": 405}),
         mimetype="application/json"
     ), 405
 
