@@ -16,6 +16,13 @@ def init_db():
             texto TEXT NOT NULL
         )
     """)
+    connection.execute("""
+        CREATE TABLE IF NOT EXISTS decibels (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            value REAL NOT NULL,
+            timestamp DATATIME DEFAULT CURRENT_TIMESTAMP
+        )
+    """)
     cursor = connection.execute("SELECT COUNT(*) FROM mensagens")
     if cursor.fetchone()[0] == 0:
         connection.execute("INSERT INTO mensagens (texto) VALUES ('Hello World do SQLite!')")
@@ -24,7 +31,7 @@ def init_db():
 
 @app.errorhandler(404)
 def page_not_found(erro):
-    return f"Page doesn't exist!\nErro {erro}", 404    
+    return "Page doesn't exist!\nErro {}".format(erro), 404    
 
 @app.route("/api/")
 def api():
