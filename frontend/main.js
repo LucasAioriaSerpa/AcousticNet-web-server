@@ -1,3 +1,24 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const menuItems = document.querySelectorAll(".menu__item");
+  const pages = document.querySelectorAll(".page");
+  menuItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      menuItems.forEach((m) => m.classList.remove("active"));
+      pages.forEach((p) => p.classList.remove("active"));
+      item.classList.add("active");
+      const targetPageId = item.getAttribute("data-page");
+      const targetPage = document.getElementById(`page-${targetPageId}`);
+      if (targetPage) {
+        targetPage.classList.add("active");
+      }
+    });
+  });
+});
+
+// ================================================================================
+//?    routes & Graph logic
+// ================================================================================
+
 const routes = {
   api: "/api/",
   hello: "/api/hello",
