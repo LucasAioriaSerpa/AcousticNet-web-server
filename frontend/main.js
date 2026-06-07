@@ -19,24 +19,24 @@ async function fetchData(pathAPI) {
   }
 }
 
-async function fetchHelloWorld() {
-  try {
-    const data = await fetchData(routes["hello"]);
-    document.getElementById("status_backend").textContent =
-      "Status: Conectado ao backend";
-    document.getElementById("resposta").textContent = JSON.stringify(
-      data,
-      null,
-      2,
-    );
-    console.log("Dados recebida:", data);
-  } catch (error) {
-    document.getElementById("status_backend").textContent =
-      "Status: Falha na conexão.";
-    document.getElementById("resposta").textContent = error.message;
-    console.error(`Fetch error:`, error);
-  }
-}
+// async function fetchHelloWorld() {
+//   try {
+//     const data = await fetchData(routes["hello"]);
+//     document.getElementById("status_backend").textContent =
+//       "Status: Conectado ao backend";
+//     document.getElementById("resposta").textContent = JSON.stringify(
+//       data,
+//       null,
+//       2,
+//     );
+//     console.log("Dados recebida:", data);
+//   } catch (error) {
+//     document.getElementById("status_backend").textContent =
+//       "Status: Falha na conexão.";
+//     document.getElementById("resposta").textContent = error.message;
+//     console.error(`Fetch error:`, error);
+//   }
+//}
 
 const ctx = document.getElementById("graph_decibels").getContext("2d");
 const graph = new Chart(ctx, {
