@@ -5,14 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <title>AcousticNet - Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <h1>AcousticNet</h1>
-    <h2>Backend Flask API</h2>
-    <div class="backend_status_part">
-      <p id="status_backend">Status: Consultando backend...</p>
-      <pre id="resposta"></pre>
-    </div>
+    <main>
+      <h2>Backend Flask API</h2>
+      <div class="backend_status_part">
+        <p id="status_backend">Status: Consultando backend...</p>
+        <pre id="resposta"></pre>
+      </div>
+      <div class="graph_part">
+        <h2>Decibéis em tempo real</h2>
+        <canvas id="graph_decibels"></canvas>
+      </div>
+    </main>
   </body>
   <script src="main.js"></script>
 </html>

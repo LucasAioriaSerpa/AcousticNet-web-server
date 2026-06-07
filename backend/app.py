@@ -1,4 +1,4 @@
-from flask import Flask, Response
+from flask import Flask, Response, request
 import sqlite3
 import json
 import os
@@ -21,8 +21,6 @@ def init_db():
         connection.execute("INSERT INTO mensagens (texto) VALUES ('Hello World do SQLite!')")
     connection.commit()
     connection.close()
-
-app.logger.debug("debug log!")
 
 @app.errorhandler(404)
 def page_not_found(erro):
@@ -58,7 +56,42 @@ def health():
     })
     return Response(data, mimetype="application/json"), 200
 
+@app.route("/api/decibels", methods=["POST"])
+def recive_decibels():
+    try:
+        body = request.get_data(as_text=True)
+        data = json.loads(body)
+        value = data.get("value")
+        if value is None:
+            return Response(
+                json.dumps({"error": "camp 'value' missing!"}),
+                mimetype="application/json"
+            ), 400
+        connection = sqlite3.connect(DB_PATH)
+        connection.execute("INSERT INTO decibels (value) VALUES (?)", (value,))
+        connection.commit()
+        connection.close()
+        return Response(
+            json.dumps({"status": "ok", "value": value}),
+            mimetype="application/json"
+        ), 201
+    except Exception as E:
+        return Response(
+            json.dumps({"error": str(E)}),
+            mimetype="application/json"
+        ), 500
+
+@app.route("/api/decibeis", methods=["GET"])
+def list_decibels():
+    connection = sqlite3.connect(DB_PATH)
+    cursor = connection.execute(
+        "SELECT value, timestamp FROM decibels ORDER BY timestamp DESC LIMIT 50"
+    )
+    rows = cursor.fetchall()
+    connection.close()
+    data = json.dumps([{"valor": r[0], "timestamp": r[1]} for r in rows])
+    return Response(data, mimetype="application/json"), 200
+
 if __name__ == '__main__':
     init_db()
     app.run(host='0.0.0.0', port=5000)
-
