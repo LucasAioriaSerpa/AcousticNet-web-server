@@ -88,7 +88,7 @@ def recive_decibels():
             mimetype="application/json"
         ), 500
 
-@app.route("/api/decibeis", methods=["GET"])
+@app.route("/api/decibels", methods=["GET"])
 def list_decibels():
     connection = sqlite3.connect(DB_PATH)
     cursor = connection.execute(
