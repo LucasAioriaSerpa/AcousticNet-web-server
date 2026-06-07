@@ -3,23 +3,258 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AcousticNet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
-    <title>AcousticNet - Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <h1>AcousticNet</h1>
-    <main>
-      <div class="backend_status_part">
-        <h2>Backend Flask API</h2>
-        <p id="status_backend">Status: Consultando backend...</p>
-        <pre id="resposta"></pre>
+    <!-- SIDEBAR NAV -->
+    <nav class="sidebar">
+      <div class="sidebar__logo">
+        <span class="logo__icon">◈</span>
+        <span class="logo__text">AcousticNet</span>
       </div>
-      <div class="graph_part">
-        <h2>Decibéis em tempo real</h2>
-        <canvas id="graph_decibels"></canvas>
+      <ul class="sidebar__menu">
+        <li class="menu__item active" data-page="dashboard">
+          <span class="menu__icon">▸</span>
+          <span class="menu__label">Dashboard</span>
+        </li>
+        <li class="menu__item" data-page="nas">
+          <span class="menu__icon">▸</span>
+          <span class="menu__label">NAS</span>
+        </li>
+        <li class="menu__item" data-page="camera">
+          <span class="menu__icon">▸</span>
+          <span class="menu__label">Câmera SE220</span>
+        </li>
+      </ul>
+      <div class="sidebar__status">
+        <div class="status__dot" id="status_dot"></div>
+        <span class="status__text" id="status_text">Conectando...</span>
       </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+      <!-- PAGE: DASHBOARD -->
+      <section class="page active" id="page-dashboard">
+        <header class="page__header">
+          <div>
+            <p class="page__label">MONITORAMENTO</p>
+            <h1 class="page__title">Dashboard</h1>
+          </div>
+          <div class="header__live">
+            <span class="live__dot"></span>
+            <span>AO VIVO</span>
+          </div>
+        </header>
+
+        <div class="cards">
+          <div class="card card--highlight">
+            <p class="card__label">DECIBÉIS AGORA</p>
+            <p class="card__value" id="db_now">— dB</p>
+            <p class="card__sub" id="db_time">aguardando leitura</p>
+          </div>
+          <div class="card">
+            <p class="card__label">STATUS BACKEND</p>
+            <p class="card__value card__value--sm" id="backend_status">—</p>
+            <p class="card__sub" id="backend_sub">verificando</p>
+          </div>
+          <div class="card">
+            <p class="card__label">BANCO DE DADOS</p>
+            <p class="card__value card__value--sm" id="db_status">—</p>
+            <p class="card__sub">SQLite</p>
+          </div>
+        </div>
+
+        <div class="graph__wrapper">
+          <div class="graph__header">
+            <p class="graph__title">NÍVEL DE PRESSÃO SONORA — FC-04</p>
+            <div class="graph__legend">
+              <span class="legend__dot"></span>
+              <span>dB SPL</span>
+            </div>
+          </div>
+          <canvas id="graph_decibels"></canvas>
+        </div>
+      </section>
+
+      <!-- PAGE: NAS -->
+      <section class="page" id="page-nas">
+        <header class="page__header">
+          <div>
+            <p class="page__label">ARMAZENAMENTO</p>
+            <h1 class="page__title">NAS — OpenMediaVault</h1>
+          </div>
+          <div class="header__badge">PC-2 / Lenovo S145</div>
+        </header>
+
+        <div class="cards">
+          <div class="card">
+            <p class="card__label">ENDEREÇO</p>
+            <p class="card__value card__value--sm">192.168.15.20</p>
+            <p class="card__sub">rede local</p>
+          </div>
+          <div class="card">
+            <p class="card__label">PROTOCOLO</p>
+            <p class="card__value card__value--sm">SMB/CIFS</p>
+            <p class="card__sub">porta 445</p>
+          </div>
+          <div class="card">
+            <p class="card__label">STORAGE</p>
+            <p class="card__value card__value--sm">1 TB</p>
+            <p class="card__sub">disco disponível</p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__header">
+            <p class="panel__title">ACESSO AO PAINEL</p>
+          </div>
+          <div class="panel__body">
+            <p class="panel__desc">
+              O NAS é gerenciado via OpenMediaVault. Acesse o painel
+              administrativo pelo endereço abaixo na rede local do estúdio.
+            </p>
+            <a class="btn" href="http://192.168.15.20" target="_blank">
+              ▸ Abrir OpenMediaVault
+            </a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__header">
+            <p class="panel__title">DADOS SENSÍVEIS ARMAZENADOS</p>
+          </div>
+          <div class="panel__body">
+            <div class="file__list">
+              <div class="file__item">
+                <span class="file__icon">◈</span>
+                <div>
+                  <p class="file__name">Fonogramas</p>
+                  <p class="file__desc">
+                    Acesso restrito ao produtor responsável
+                  </p>
+                </div>
+                <span class="file__badge file__badge--restricted"
+                  >RESTRITO</span
+                >
+              </div>
+              <div class="file__item">
+                <span class="file__icon">◈</span>
+                <div>
+                  <p class="file__name">Partituras</p>
+                  <p class="file__desc">
+                    Cantores, músicos e produtores da obra
+                  </p>
+                </div>
+                <span class="file__badge file__badge--partial">PARCIAL</span>
+              </div>
+              <div class="file__item">
+                <span class="file__icon">◈</span>
+                <div>
+                  <p class="file__name">Composições</p>
+                  <p class="file__desc">
+                    Propriedade intelectual — direito autoral
+                  </p>
+                </div>
+                <span class="file__badge file__badge--partial">PARCIAL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE: CÂMERA -->
+      <section class="page" id="page-camera">
+        <header class="page__header">
+          <div>
+            <p class="page__label">SEGURANÇA</p>
+            <h1 class="page__title">Câmera SE220</h1>
+          </div>
+          <div class="header__badge">Multilaser Liv</div>
+        </header>
+
+        <div class="cards">
+          <div class="card">
+            <p class="card__label">ENDEREÇO</p>
+            <p class="card__value card__value--sm">192.168.15.40</p>
+            <p class="card__sub">rede local</p>
+          </div>
+          <div class="card">
+            <p class="card__label">PROTOCOLO</p>
+            <p class="card__value card__value--sm">RTSP</p>
+            <p class="card__sub">porta 554</p>
+          </div>
+          <div class="card">
+            <p class="card__label">RESOLUÇÃO</p>
+            <p class="card__value card__value--sm">720p</p>
+            <p class="card__sub">30fps — 120° FOV</p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__header">
+            <p class="panel__title">FEED DA CÂMERA</p>
+          </div>
+          <div class="panel__body camera__feed">
+            <div class="camera__placeholder">
+              <div class="camera__icon">⬡</div>
+              <p class="camera__msg">
+                Feed RTSP disponível via app Multilaser Liv
+              </p>
+              <p class="camera__sub">
+                A câmera SE220 depende de servidor externo para streaming
+                remoto. Na rede local, acesse via protocolo RTSP no endereço
+                abaixo.
+              </p>
+              <code class="camera__url">rtsp://192.168.15.40:554/stream</code>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__header">
+            <p class="panel__title">ESPECIFICAÇÕES</p>
+          </div>
+          <div class="panel__body">
+            <div class="specs__grid">
+              <div class="spec__item">
+                <p class="spec__label">CPU</p>
+                <p class="spec__value">HI3518E V200 (ARM)</p>
+              </div>
+              <div class="spec__item">
+                <p class="spec__label">RAM</p>
+                <p class="spec__value">~64 MB (SoC)</p>
+              </div>
+              <div class="spec__item">
+                <p class="spec__label">ARMAZENAMENTO</p>
+                <p class="spec__value">MicroSD até 128GB</p>
+              </div>
+              <div class="spec__item">
+                <p class="spec__label">CONECTIVIDADE</p>
+                <p class="spec__value">Wi-Fi 2.4GHz</p>
+              </div>
+              <div class="spec__item">
+                <p class="spec__label">ALIMENTAÇÃO</p>
+                <p class="spec__value">Bateria 18650</p>
+              </div>
+              <div class="spec__item">
+                <p class="spec__label">AUTONOMIA</p>
+                <p class="spec__value">~3 meses standby</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <script src="main.js"></script>
   </body>
-  <script src="main.js"></script>
 </html>
