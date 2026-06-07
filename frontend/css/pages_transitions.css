@@ -23,36 +23,32 @@
 }
 
 /* ============================================================
-?   MAIN
+?   PAGES & TRANSITIONS
    ============================================================ */
-.main {
-  margin-left: var(--sidebar-w);
-  flex: 1;
-  padding: 40px 48px;
-  min-height: 100vh;
-  position: relative;
-}
-
-/* ============================================================
-?   BUTTON
-   ============================================================ */
-.btn {
-  display: inline-block;
-  padding: 12px 24px;
-  background: var(--accent);
-  color: var(--bg);
-  font-family: "Space Mono", monospace;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-decoration: none;
-  border-radius: var(--radius);
+.page {
+  position: absolute;
+  top: 40px;
+  left: 48px;
+  right: 48px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
   transition:
-    background 0.2s,
-    transform 0.15s;
+    opacity 0.35s var(--transition),
+    transform 0.35s var(--transition);
 }
 
-.btn:hover {
-  background: #f5ff80;
-  transform: translateX(2px);
+.page.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+}
+
+.page.leaving {
+  opacity: 0;
+  transform: translateY(-8px);
 }

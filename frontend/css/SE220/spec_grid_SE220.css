@@ -23,36 +23,30 @@
 }
 
 /* ============================================================
-?   MAIN
+?   SPECS GRID (SE220)
    ============================================================ */
-.main {
-  margin-left: var(--sidebar-w);
-  flex: 1;
-  padding: 40px 48px;
-  min-height: 100vh;
-  position: relative;
+.specs__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
 }
 
-/* ============================================================
-?   BUTTON
-   ============================================================ */
-.btn {
-  display: inline-block;
-  padding: 12px 24px;
-  background: var(--accent);
-  color: var(--bg);
-  font-family: "Space Mono", monospace;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-decoration: none;
+.spec__item {
+  background: var(--bg-3);
+  padding: 16px;
   border-radius: var(--radius);
-  transition:
-    background 0.2s,
-    transform 0.15s;
 }
 
-.btn:hover {
-  background: #f5ff80;
-  transform: translateX(2px);
+.spec__label {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.spec__value {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
 }

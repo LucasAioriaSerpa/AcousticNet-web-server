@@ -23,36 +23,43 @@
 }
 
 /* ============================================================
-?   MAIN
+?   MOBILE BOTTOMBAR
    ============================================================ */
-.main {
-  margin-left: var(--sidebar-w);
+.bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--bg-2);
+  border-top: 1px solid var(--border);
+  z-index: 1000;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.bottom-nav__item {
   flex: 1;
-  padding: 40px 48px;
-  min-height: 100vh;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: color 0.25s;
 }
 
-/* ============================================================
-?   BUTTON
-   ============================================================ */
-.btn {
-  display: inline-block;
-  padding: 12px 24px;
-  background: var(--accent);
-  color: var(--bg);
-  font-family: "Space Mono", monospace;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-decoration: none;
-  border-radius: var(--radius);
-  transition:
-    background 0.2s,
-    transform 0.15s;
+.bottom-nav__item.active {
+  color: var(--accent);
 }
 
-.btn:hover {
-  background: #f5ff80;
-  transform: translateX(2px);
+.bottom-nav__icon {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.bottom-nav__label {
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }

@@ -23,36 +23,36 @@
 }
 
 /* ============================================================
-?   MAIN
+?   PANEL
    ============================================================ */
-.main {
-  margin-left: var(--sidebar-w);
-  flex: 1;
-  padding: 40px 48px;
-  min-height: 100vh;
-  position: relative;
-}
-
-/* ============================================================
-?   BUTTON
-   ============================================================ */
-.btn {
-  display: inline-block;
-  padding: 12px 24px;
-  background: var(--accent);
-  color: var(--bg);
-  font-family: "Space Mono", monospace;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-decoration: none;
+.panel {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
-  transition:
-    background 0.2s,
-    transform 0.15s;
+  margin-bottom: 20px;
+  overflow: hidden;
 }
 
-.btn:hover {
-  background: #f5ff80;
-  transform: translateX(2px);
+.panel__header {
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-3);
+}
+
+.panel__title {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+.panel__body {
+  padding: 28px 24px;
+}
+
+.panel__desc {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.8;
+  margin-bottom: 24px;
 }

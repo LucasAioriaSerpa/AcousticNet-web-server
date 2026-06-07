@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap");
+
+/* ============================================================
+?   TOKENS / COLOR PALLET
+   ============================================================ */
+:root {
+  --bg: #0a0a0c;
+  --bg-2: #111116;
+  --bg-3: #18181f;
+  --border: #2a2a35;
+  --border-2: #3a3a48;
+  --accent: #e8ff47;
+  --accent-dim: #e8ff4722;
+  --accent-2: #47c8ff;
+  --text: #e8e8f0;
+  --text-dim: #7070a0;
+  --text-muted: #3a3a55;
+  --red: #ff4757;
+  --green: #47ff9a;
+  --sidebar-w: 240px;
+  --radius: 4px;
+  --transition: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+?   CAMERA (SE220)
+   ============================================================ */
+.camera__feed {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.camera__placeholder {
+  text-align: center;
+  max-width: 480px;
+}
+
+.camera__icon {
+  font-size: 48px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  animation: spin 12s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.camera__msg {
+  font-family: "Syne", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.camera__sub {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.camera__url {
+  display: inline-block;
+  background: var(--bg-3);
+  border: 1px solid var(--border-2);
+  color: var(--accent-2);
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  font-family: "Space Mono", monospace;
+}

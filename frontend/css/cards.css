@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap");
+
+/* ============================================================
+?   TOKENS / COLOR PALLET
+   ============================================================ */
+:root {
+  --bg: #0a0a0c;
+  --bg-2: #111116;
+  --bg-3: #18181f;
+  --border: #2a2a35;
+  --border-2: #3a3a48;
+  --accent: #e8ff47;
+  --accent-dim: #e8ff4722;
+  --accent-2: #47c8ff;
+  --text: #e8e8f0;
+  --text-dim: #7070a0;
+  --text-muted: #3a3a55;
+  --red: #ff4757;
+  --green: #47ff9a;
+  --sidebar-w: 240px;
+  --radius: 4px;
+  --transition: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+?   CARDS
+   ============================================================ */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-2), transparent);
+}
+
+.card:hover {
+  border-color: var(--border-2);
+}
+
+.card--highlight {
+  border-color: var(--accent);
+  background: linear-gradient(135deg, var(--bg-2), #1a1f0a);
+}
+
+.card--highlight::before {
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+.card__label {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.card__value {
+  font-family: "Syne", sans-serif;
+  font-weight: 800;
+  font-size: 36px;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 8px;
+  transition: color 0.3s;
+}
+
+.card__value--sm {
+  font-size: 22px;
+  color: var(--text);
+}
+
+.card--highlight .card__value {
+  color: var(--accent);
+}
+
+.card__sub {
+  font-size: 11px;
+  color: var(--text-dim);
+}

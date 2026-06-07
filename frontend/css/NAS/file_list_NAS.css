@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap");
+
+/* ============================================================
+?   TOKENS / COLOR PALLET
+   ============================================================ */
+:root {
+  --bg: #0a0a0c;
+  --bg-2: #111116;
+  --bg-3: #18181f;
+  --border: #2a2a35;
+  --border-2: #3a3a48;
+  --accent: #e8ff47;
+  --accent-dim: #e8ff4722;
+  --accent-2: #47c8ff;
+  --text: #e8e8f0;
+  --text-dim: #7070a0;
+  --text-muted: #3a3a55;
+  --red: #ff4757;
+  --green: #47ff9a;
+  --sidebar-w: 240px;
+  --radius: 4px;
+  --transition: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+?   FILE LIST (NAS)
+   ============================================================ */
+.file__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.file__item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: var(--bg-3);
+  border-radius: var(--radius);
+  transition: background 0.2s;
+}
+
+.file__item:hover {
+  background: #1f1f2a;
+}
+
+.file__icon {
+  color: var(--accent);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.file__name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.file__desc {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.file__badge {
+  margin-left: auto;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  padding: 4px 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.file__badge--restricted {
+  background: #ff475726;
+  color: var(--red);
+  border: 1px solid #ff47574d;
+}
+
+.file__badge--partial {
+  background: #e8ff471a;
+  color: var(--accent);
+  border: 1px solid #e8ff4733;
+}

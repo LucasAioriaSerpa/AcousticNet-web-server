@@ -23,36 +23,36 @@
 }
 
 /* ============================================================
-?   MAIN
+?   RESET & BASE
    ============================================================ */
-.main {
-  margin-left: var(--sidebar-w);
-  flex: 1;
-  padding: 40px 48px;
-  min-height: 100vh;
-  position: relative;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* ============================================================
-?   BUTTON
-   ============================================================ */
-.btn {
-  display: inline-block;
-  padding: 12px 24px;
-  background: var(--accent);
-  color: var(--bg);
+html {
+  font-size: 16px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
   font-family: "Space Mono", monospace;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-decoration: none;
-  border-radius: var(--radius);
-  transition:
-    background 0.2s,
-    transform 0.15s;
+  display: flex;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-.btn:hover {
-  background: #f5ff80;
-  transform: translateX(2px);
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-2);
+  border-radius: 2px;
 }

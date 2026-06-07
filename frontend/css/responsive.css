@@ -1,0 +1,54 @@
+/* ============================================================
+?   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .sidebar {
+    display: none;
+  }
+  .bottom-nav {
+    display: flex;
+  }
+  .main {
+    margin-left: 0;
+    padding: 24px 20px 80px;
+  }
+  .page {
+    left: 20px;
+    right: 20px;
+  }
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  .specs__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 480px) {
+  .page__title {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+  .dashboard {
+    font-size: 22px;
+  }
+  .NAS {
+    font-size: 13px;
+  }
+  .SE220 {
+    font-size: 18px;
+  }
+  .card__value {
+    font-size: 32px;
+  }
+  .card__value--sm {
+    font-size: 18px;
+    word-break: break-all;
+  }
+  .specs__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .graph__wrapper {
+    padding: 16px;
+  }
+}

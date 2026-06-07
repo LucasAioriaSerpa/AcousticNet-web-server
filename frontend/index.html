@@ -11,6 +11,18 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/sidebar.css" />
+    <link rel="stylesheet" href="css/bottombar_mobile.css" />
+    <link rel="stylesheet" href="css/reset_base.css" />
+    <link rel="stylesheet" href="css/panel.css" />
+    <link rel="stylesheet" href="css/pages_transitions.css" />
+    <link rel="stylesheet" href="css/page_header.css" />
+    <link rel="stylesheet" href="css/graph.css" />
+    <link rel="stylesheet" href="css/cards.css" />
+    <link rel="stylesheet" href="css/NAS/file_list_NAS.css" />
+    <link rel="stylesheet" href="css/SE220/camera_SE220.css" />
+    <link rel="stylesheet" href="css/SE220/spec_grid_SE220.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
@@ -47,7 +59,7 @@
         <header class="page__header">
           <div>
             <p class="page__label">MONITORAMENTO</p>
-            <h1 class="page__title">Dashboard</h1>
+            <h1 class="page__title dashboard">Dashboard</h1>
           </div>
           <div class="header__live">
             <span class="live__dot"></span>
@@ -90,7 +102,7 @@
         <header class="page__header">
           <div>
             <p class="page__label">ARMAZENAMENTO</p>
-            <h1 class="page__title">NAS — OpenMediaVault</h1>
+            <h1 class="page__title NAS">NAS — OpenMediaVault</h1>
           </div>
           <div class="header__badge">PC-2 / Lenovo S145</div>
         </header>
@@ -176,7 +188,7 @@
         <header class="page__header">
           <div>
             <p class="page__label">SEGURANÇA</p>
-            <h1 class="page__title">Câmera SE220</h1>
+            <h1 class="page__title SE220">Câmera SE220</h1>
           </div>
           <div class="header__badge">Multilaser Liv</div>
         </header>
@@ -254,6 +266,22 @@
         </div>
       </section>
     </main>
+
+    <!-- BOTTOMBAR NAV (MOBILE ONLY) -->
+    <nav class="bottom-nav">
+      <div class="bottom-nav__item active" data-page="dashboard">
+        <span class="bottom-nav__icon">◱</span>
+        <span class="bottom-nav__label">Home</span>
+      </div>
+      <div class="bottom-nav__item" data-page="nas">
+        <span class="bottom-nav__icon">⛁</span>
+        <span class="bottom-nav__label">NAS</span>
+      </div>
+      <div class="bottom-nav__item" data-page="camera">
+        <span class="bottom-nav__icon">◎</span>
+        <span class="bottom-nav__label">Câmera</span>
+      </div>
+    </nav>
 
     <script src="main.js"></script>
   </body>
