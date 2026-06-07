@@ -15,7 +15,7 @@ async function fetchData(pathAPI) {
     return data;
   } catch (error) {
     console.error(`Fetch error:`, error);
-    return error;
+    return null;
   }
 }
 
@@ -64,9 +64,9 @@ const graph = new Chart(ctx, {
 
 async function updateGraph() {
   const datas = await fetchData(routes["decibels"]);
-  if (!datas) return;
-  const inverted = datas.reverse();
-  graph.data.labels = inverted.map((d) => d.timestamp.slide(11, 19));
+  if (!datas || !Array.isArray(datas)) return;
+  const inverted = [...datas].reverse();
+  graph.data.labels = inverted.map((d) => d.timestamp.slice(11, 19));
   graph.data.datasets[0].data = inverted.map((d) => d.value);
   graph.update();
 }

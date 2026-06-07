@@ -24,16 +24,20 @@ O computador desktop que está servindo como servidor web para este projeto é [
 - Docker v3.8
   ...
 
-## Setup Docker
+## Setup/Reset/Update Docker
 
 ```bash
-# Parar e remover containers + volumes
+#? Parar e remover containers + volumes
 docker rm -f frontend backend
 docker volume rm sqlite_data
 
-# Recriar volume e subir novamente
+#? Recriar volume e subir novamente
 docker volume create sqlite_data
 
+#? Refaz a imagem do backend
+docker build --no-cache -t acousticnet-backend ./backend
+
+#? criar e rodar os containers
 docker run -d \
   --name backend \
   --network acousticnet \
