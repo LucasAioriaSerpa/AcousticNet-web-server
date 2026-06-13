@@ -9,10 +9,13 @@ def insert_decibel(value):
 
 def list_decibels(limit=50):
     conn = get_connection()
-    cursor = conn.execute(
-        "SELECT value, timestamp FROM decibels ORDER BY timestamp ASC LIMIT ?",
-        (limit,)
-    )
+    cursor = conn.execute("""
+        SELECT value, timestamp FROM (
+            SELECT value, timestamp FROM decibels
+            ORDER BY timestamp DESC
+            LIMIT ?
+        ) ORDER BY timestamp ASC
+    """, (limit,))
     rows = cursor.fetchall()
     conn.close()
     return rows
