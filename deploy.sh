@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NC="\033[0m]"		#? No color
+NC="\033[0m"		#? No color
 GREEN="\033[0;32m"	#? Color Green
 
 echo -e "${GREEN}Parando & removendo containers antigos...${NC}"
