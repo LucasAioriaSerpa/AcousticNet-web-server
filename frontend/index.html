@@ -152,45 +152,6 @@
           </div>
         </div>
 
-        <div id="nas_browser" class="hidden">
-          <div class="folder__tabs" id="nas_folder_tabs">
-            <button class="folder__tab active" data-folder="fonogramas">
-              Fonogramas
-            </button>
-            <button class="folder__tab" data-folder="partituras">
-              Partituras
-            </button>
-            <button class="folder__tab" data-folder="composicoes">
-              Composições
-            </button>
-          </div>
-          <div class="panel">
-            <div class="panel__header">
-              <p class="panel__title">ARQUIVOS</p>
-            </div>
-            <div class="panel__body">
-              <ul class="file__browser" id="nas_file_list">
-                <li class="file__empty">Carregando...</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="panel">
-            <div class="panel__header">
-              <p class="panel__title">ENVIAR ARQUIVO</p>
-            </div>
-            <div class="panel__body">
-              <form id="nas_upload_form" class="nas__form">
-                <input type="file" id="nas_upload_input" required />
-                <button type="submit" class="btn">▸ Enviar</button>
-                <p class="nas__error" id="nas_upload_status"></p>
-              </form>
-            </div>
-          </div>
-
-          <button class="btn btn--logout" id="nas_logout_btn">Sair</button>
-        </div>
-
         <div class="panel">
           <div class="panel__header">
             <p class="panel__title">DADOS SENSÍVEIS ARMAZENADOS</p>
@@ -231,6 +192,47 @@
               </div>
             </div>
           </div>
+        </div>
+
+        <div id="nas_browser" class="hidden">
+          <div class="folder__tabs" id="nas_folder_tabs">
+            <button class="folder__tab active" data-folder="fonogramas">
+              Fonogramas
+            </button>
+            <button class="folder__tab" data-folder="partituras">
+              Partituras
+            </button>
+            <button class="folder__tab" data-folder="composicoes">
+              Composições
+            </button>
+          </div>
+          <div class="panel">
+            <div class="panel__header">
+              <p class="panel__title">ARQUIVOS</p>
+            </div>
+            <div class="panel__body">
+              <ul class="file__browser" id="nas_file_list">
+                <li class="file__empty">Carregando...</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel__header">
+              <p class="panel__title">ENVIAR ARQUIVO</p>
+            </div>
+            <div class="panel__body">
+              <form id="nas_upload_form" class="nas__form">
+                <input type="file" id="nas_upload_input" required />
+                <button type="submit" class="btn">▸ Enviar</button>
+                <p class="nas__error" id="nas_upload_status"></p>
+              </form>
+            </div>
+          </div>
+
+          <button class="btn btn--logout" id="nas_logout_btn">
+            Sair - Logout
+          </button>
         </div>
       </section>
 
