@@ -12,6 +12,20 @@ SHARES = {
     "composicoes": "Beatles-composicoes",
 }
 
+def _friendly_error(e):
+    msg = str(e)
+    upper = msg.upper()
+    if "ACCESS_DENIED" in upper:
+        return "Permissão negada — seu usuário não tem acesso de escrita nesta pasta"
+    if "OBJECT_NAME_NOT_FOUND" in upper or "OBJECT_PATH_NOT_FOUND" in upper:
+        return "Arquivo ou pasta não encontrado no NAS"
+    if "DISK_FULL" in upper:
+        return "Sem espaço disponível no NAS"
+    if "SHARING_VIOLATION" in upper:
+        return "Arquivo em uso por outro processo no NAS"
+    first_line = msg.split("\n")[0]
+    return first_line[:120]
+
 def get_connection(username, password):
     conn = SMBConnection(
         username, password,
@@ -69,7 +83,7 @@ def upload_file(username, password, folder_key, filename, file_stream):
     try:
         conn.storeFile(share, "/" + filename, file_stream)
         return True, None
-    except Exception as e: return False, str(e)
+    except Exception as e: return False, _friendly_error(e)
     finally: conn.close()
 
 def delete_file(username, password, folder_key, filename):
@@ -80,5 +94,5 @@ def delete_file(username, password, folder_key, filename):
     try:
         conn.deleteFiles(share, "/" + filename)
         return True, None
-    except Exception as e: return False, str(e)
+    except Exception as e: return False, _friendly_error(e)
     finally: conn.close()
