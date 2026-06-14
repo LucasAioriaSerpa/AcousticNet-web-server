@@ -10,11 +10,13 @@ from flask import Flask, Response
 from database import init_db
 from features.health.routes import health_bp
 from features.decibels.routes import decibels_bp
+from features.nas.routes import nas_bp
 
 app = Flask(__name__)
 
 app.register_blueprint(health_bp)
 app.register_blueprint(decibels_bp)
+app.register_blueprint(nas_bp)
 
 @app.errorhandler(404)
 def not_found(e):
