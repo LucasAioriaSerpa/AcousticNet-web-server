@@ -20,15 +20,17 @@ app.register_blueprint(nas_bp)
 
 @app.errorhandler(404)
 def not_found(e):
+    error_message = str(e)
     return Response(
-        json.dumps({"error": ["route not found", str(e)], "status": 404}),
+        json.dumps({"error": ["route not found", error_message], "status": 404}),
         mimetype="application/json"
     ), 404
 
 @app.errorhandler(405)
 def method_not_allowed(e):
+    error_message = str(e)
     return Response(
-        json.dumps({"error": ["method not allowed", str(e)], "status": 405}),
+        json.dumps({"error": ["method not allowed", error_message], "status": 405}),
         mimetype="application/json"
     ), 405
 
