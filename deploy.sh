@@ -1,28 +1,31 @@
 #!/bin/bash
 
-echo "Parando & removendo containers antigos..."
+NC="\033[0m]"		#? No color
+GREEN="\033[0;32m"	#? Color Green
+
+echo "${GREEN}Parando & removendo containers antigos...${NC}"
 docker rm -f frontend backend || true
 
-echo "Removendo volume antigo..."
+echo "${GREEN}Removendo volume antigo...${NC}"
 docker volume rm sqlite_data || true
 
-echo "Criando novo volume..."
+echo "${GREEN}Criando novo volume...${NC}"
 docker volume create sqlite_data
 
-echo "Reconstruindo a imagem do backend"
+echo "${GREEN}Reconstruindo a imagem do backend${NC}"
 docker build --no-cache -t acousticnet-backend ./backend
 
-echo "Criando e inicializando o container do backend"
+echo "${GREEN}Criando e inicializando o container do backend${NC}"
 docker run -d \
 	--name backend \
 	--network acousticnet \
 	-v sqlite_data:/app/data \
 	acousticnet-backend
 
-echo "Espera 3 segundos para que o backend seja inicializado"
+echo "${GREEN}Espera 3 segundos para que o backend seja inicializado${NC}"
 sleep 3
 
-echo "Criando e inicializando o container do frontend"
+echo "${GREEN}Criando e inicializando o container do frontend${NC}"
 docker run -d \
 	--name frontend \
 	--network acousticnet \
@@ -31,5 +34,5 @@ docker run -d \
 	-v ~/acousticnet/nginx.conf:/etc/nginx/conf.d/default.conf \
 	i386/nginx:alpine
 
-echo "Deploy realizado!"
+echo "${GREEN}Deploy realizado!${NC}"
 docker ps
