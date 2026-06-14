@@ -9,6 +9,12 @@ docker network create acousticnet || true
 echo -e "${GREEN}Parando & removendo containers antigos...${NC}"
 docker rm -f frontend backend || true
 
+echo -e "${GREEN}Parar todos os containers que não estão rodando..."
+docker container prune -f
+
+echo -e "${GREEN}Para todas as imagens "órfãs"..."
+docker image prune -f
+
 echo -e "${GREEN}Removendo volume antigo...${NC}"
 docker volume rm sqlite_data || true
 
