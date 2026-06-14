@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/graph.css" />
     <link rel="stylesheet" href="css/cards.css" />
     <link rel="stylesheet" href="css/NAS/file_list_NAS.css" />
+    <link rel="stylesheet" href="css/NAS/login_FileBrowser_NAS.css">
     <link rel="stylesheet" href="css/SE220/camera_SE220.css" />
     <link rel="stylesheet" href="css/SE220/spec_grid_SE220.css" />
     <link rel="stylesheet" href="css/responsive.css" />
@@ -107,16 +108,50 @@
           <div class="header__badge">PC-2 / Lenovo S145</div>
         </header>
 
-	<div class="panel" id="nas_login_panel">
-	  <div class="panel__header">
-	    <p class="panel__title">LOGIN NO NAS</p>
-	  </div>
-	  <div class="panel__body">
-	    <form id="nas_login_form" class="nas__form">
-	      <input type="text" id="nas_usarname" placeholder="Usuário" autocomplete="username"> required />
-	    </form>
-	  </div>
-	</div>
+        <div class="panel" id="nas_login_panel">
+          <div class="panel__header">
+            <p class="panel__title">LOGIN NO NAS</p>
+          </div>
+          <div class="panel__body">
+            <form id="nas_login_form" class="nas__form">
+              <input
+                type="text"
+                id="nas_usarname"
+                placeholder="Usuário"
+                autocomplete="username"
+                required
+              />
+              <input
+                type="password"
+                id="nas_password"
+                placeholder="Senha"
+                autocomplete="current-password"
+                required
+              />
+              <button type="submit" id="btn">▸ Entrar</button>
+              <p class="nas__error" id="nas_login_error"></p>
+            </form>
+          </div>
+        </div>
+
+        <div id="nas_browser" class="hidden">
+          <div class="folder__tabs" id="nas_folder_tabs">
+            <button class="folder__tab active" data-folder="fonogramas"">Fonogramas</button>
+            <button class="folder__tab" data-folder="partituras">Partituras</button>
+            <button class="folder__tab" data-folder="composicoes">Composições</button>
+          </div>
+          <div class="panel">
+            <div class="panel__header">
+              <p class="panel__tile">ARQUIVOS</p>
+            </div>
+            <div class="panel__body">
+              <ul class="file_browser" id="nas_file_list">
+                <li class="file__empty">Carregando...</li>
+              </ul>
+            </div>
+          </div>
+          <button class="btn btn--logout" id="nas_logout_btn">Sair</button>
+        </div>
 
         <div class="cards">
           <div class="card">

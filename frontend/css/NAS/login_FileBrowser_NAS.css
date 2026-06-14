@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap");
+
+/* ============================================================
+?   TOKENS / COLOR PALLET
+   ============================================================ */
+:root {
+  --bg: #0a0a0c;
+  --bg-2: #111116;
+  --bg-3: #18181f;
+  --border: #2a2a35;
+  --border-2: #3a3a48;
+  --accent: #e8ff47;
+  --accent-dim: #e8ff4722;
+  --accent-2: #47c8ff;
+  --text: #e8e8f0;
+  --text-dim: #7070a0;
+  --text-muted: #3a3a55;
+  --red: #ff4757;
+  --green: #47ff9a;
+  --sidebar-w: 240px;
+  --radius: 4px;
+  --transition: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   NAS — LOGIN & FILE BROWSER
+   ============================================================ */
+.nas__form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.nas__form input[type="text"],
+.nas__form input[type="password"],
+.nas__form input[type="file"] {
+  background: var(--bg-3);
+  border: 1px solid var(--border-2);
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  font-family: "Space Mono", monospace;
+  font-size: 13px;
+  flex: 1;
+  min-width: 180px;
+}
+
+.nas__form input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.nas__error {
+  font-size: 12px;
+  color: var(--red);
+  width: 100%;
+}
+
+.nas__error.success {
+  color: var(--green);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.folder__tabs {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 20px;
+}
+
+.folder__tab {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  padding: 10px 20px;
+  font-family: "Space Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: all 0.2s;
+}
+
+.folder__tab:hover {
+  color: var(--text);
+  border-color: var(--border-2);
+}
+
+.folder__tab.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.file__browser {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.file__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--bg-3);
+  border-radius: var(--radius);
+  font-size: 13px;
+}
+
+.file__row .file__name {
+  flex: 1;
+  color: var(--text);
+}
+.file__row .file__size {
+  color: var(--text-dim);
+  font-size: 11px;
+}
+
+.file__download {
+  color: var(--accent-2);
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.file__download:hover {
+  text-decoration: underline;
+}
+
+.file__empty {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 12px;
+  padding: 20px;
+  list-style: none;
+}
+
+.btn--logout {
+  background: transparent;
+  color: var(--red);
+  border: 1px solid var(--red);
+  margin-top: 8px;
+}
+
+.btn--logout:hover {
+  background: rgba(255, 71, 87, 0.1);
+}
