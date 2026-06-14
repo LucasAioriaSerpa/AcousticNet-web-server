@@ -1,5 +1,6 @@
 
-m flask import Blueprint, Response, request, send_file
+from flask import Blueprint, Response, request, send_file
+
 import json
 from features.nas.smb_client import (
     get_connection, list_files, download_file, upload_file, SHARES
@@ -8,7 +9,6 @@ from features.nas.smb_client import (
 nas_bp = Blueprint('nas', __name__)
 
 def _get_credentials():
-    """Lê credenciais enviadas via headers customizados."""
     username = request.headers.get("X-NAS-User")
     password = request.headers.get("X-NAS-Pass")
     return username, password
@@ -90,4 +90,3 @@ def nas_upload(folder):
         return Response(json.dumps({"error": "falha no upload"}), mimetype="application/json"), 500
 
     return Response(json.dumps({"status": "ok", "filename": f.filename}), mimetype="application/json"), 201
-

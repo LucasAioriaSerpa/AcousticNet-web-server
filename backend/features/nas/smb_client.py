@@ -3,7 +3,7 @@ from smb.SMBConnection import SMBConnection
 import io
 
 NAS_SERVER = "192.168.0.100"
-NAS_PORT = 443
+NAS_PORT = 445
 
 SHARES = {
     "fonogramas": "Beatles_fonogramas",
