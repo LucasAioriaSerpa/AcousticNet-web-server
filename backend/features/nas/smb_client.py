@@ -67,14 +67,14 @@ def download_file(username, password, folder_key, filename):
 def upload_file(username, password, folder_key, filename, file_stream):
     share = SHARES.get(folder_key)
     if not share:
-        return False
+        return False, "pasta inválida"
     conn = get_connection(username, password)
     if not conn:
-        return False
+        return False, "falha na conexão SMB"
     try:
         conn.storeFile(share, "/" + filename, file_stream)
-        return True
-    except Exception:
-        return False
+        return True, None
+    except Exception as e:
+        return False, str(e)
     finally:
         conn.close()

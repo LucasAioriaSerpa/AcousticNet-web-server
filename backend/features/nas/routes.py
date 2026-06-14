@@ -86,8 +86,8 @@ def nas_upload(folder):
         return Response(json.dumps({"error": "nenhum arquivo enviado"}), mimetype="application/json"), 400
 
     f = request.files["file"]
-    ok = upload_file(username, password, folder, f.filename, f.stream)
+    ok, error_msg = upload_file(username, password, folder, f.filename, f.stream)
     if not ok:
-        return Response(json.dumps({"error": "falha no upload"}), mimetype="application/json"), 500
+        return Response(json.dumps({"error": "falha no upload" + str(error_msg)}), mimetype="application/json"), 500
 
     return Response(json.dumps({"status": "ok", "filename": f.filename}), mimetype="application/json"), 201
