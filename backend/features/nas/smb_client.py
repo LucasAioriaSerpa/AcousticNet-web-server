@@ -81,4 +81,4 @@ def delete_file(username, password, folder_key, filename):
         conn.deleteFiles(share, "/" + filename)
         return True, None
     except Exception as e: return False, str(e)
-    finally: conn:close()
+    finally: conn.close()
