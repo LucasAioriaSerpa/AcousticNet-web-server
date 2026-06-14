@@ -157,6 +157,20 @@
   text-decoration: underline;
 }
 
+.file__delete {
+  color: var(--red);
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-left: 12px;
+}
+
+.file__delete:hover {
+  text-decoration: underline;
+}
+
 .file__empty {
   text-align: center;
   color: var(--text-dim);

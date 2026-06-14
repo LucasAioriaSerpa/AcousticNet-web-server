@@ -135,12 +135,18 @@ async function nasLoadFiles(folder) {
         <span class="file__name">${file.name}</span>
         <span class="file__size">${(file.size / 1024).toFixed(1)} KB</span>
         <a class="file__download" data-filename="${file.name}">▾ Baixar</a>
+        <a class="file__delete" data-filename="${file.name}">✕ Excluir</a>
       `;
       list.appendChild(li);
     });
     list.querySelectorAll(".file__download").forEach((btn) => {
       btn.addEventListener("click", () =>
         nasDownload(folder, btn.dataset.filename),
+      );
+    });
+    list.querySelectorAll(".file__delete").forEach((btn) => {
+      btn.addEventListener("click", () =>
+        nasDelete(folder, btn.dataset.filename),
       );
     });
   } catch (err) {
@@ -175,6 +181,39 @@ async function nasDownload(folder, filename) {
   } catch (err) {
     alert("Erro de conexão ao baixar");
     console.error("NAS download error:", err);
+  }
+}
+
+// ------------------------------------------------------------
+//* Delete
+// ------------------------------------------------------------
+
+async function nasDelete(folder, filename) {
+  if (
+    !confirm(
+      `Excluir "${filename}"?\n O arquivo será movido para a lixeira do NAS.`,
+    )
+  ) {
+    return;
+  }
+  const { user, pass } = nasGetCreds();
+  try {
+    const res = await fetch(
+      `/api/nas/delete/${folder}/${encodeURIComponent(filename)}`,
+      {
+        method: "DELETE",
+        headers: { "X-NAS-User": user, "X-NAS-Pass": pass },
+      },
+    );
+    const data = await res.json();
+    if (!res.ok) {
+      alert(data.error || "Erro ao excluir arquivo");
+      return;
+    }
+    nasLoadFiles(folder);
+  } catch (err) {
+    alert("Erro de conexão ao excluir");
+    console.error("NAS delete error:", err);
   }
 }
 

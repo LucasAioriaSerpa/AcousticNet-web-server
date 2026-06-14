@@ -49,32 +49,35 @@ def list_files(username, password, folder_key):
 
 def download_file(username, password, folder_key, filename):
     share = SHARES.get(folder_key)
-    if not share:
-        return None
+    if not share: return None
     conn = get_connection(username, password)
-    if not conn:
-        return None
+    if not conn: return None
     try:
         file_obj = io.BytesIO()
         conn.retrieveFile(share, "/" + filename, file_obj)
         file_obj.seek(0)
         return file_obj
-    except Exception:
-        return None
-    finally:
-        conn.close()
+    except Exception: return None
+    finally: conn.close()
 
 def upload_file(username, password, folder_key, filename, file_stream):
     share = SHARES.get(folder_key)
-    if not share:
-        return False, "pasta inválida"
+    if not share: return False, "pasta inválida"
     conn = get_connection(username, password)
-    if not conn:
-        return False, "falha na conexão SMB"
+    if not conn: return False, "falha na conexão SMB"
     try:
         conn.storeFile(share, "/" + filename, file_stream)
         return True, None
-    except Exception as e:
-        return False, str(e)
-    finally:
-        conn.close()
+    except Exception as e: return False, str(e)
+    finally: conn.close()
+
+def delete_file(username, password, folder_key, filename):
+    share = SHARES.get(folder_key)
+    if not share: return False, "pasta inválida"
+    conn = get_connection(username, password)
+    if not conn: return False, "falha na conexão SMB"
+    try:
+        conn.deleteFiles(share, "/" + filename)
+        return True, None
+    except Exception as e: return False, str(e)
+    finally: conn:close()

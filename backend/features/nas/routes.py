@@ -4,7 +4,7 @@ from flask import Blueprint, Response, request, send_file
 
 import json
 from features.nas.smb_client import (
-    get_connection, list_files, download_file, upload_file, SHARES
+    get_connection, list_files, download_file, upload_file, delete_file, SHARES
 )
 
 nas_bp = Blueprint('nas', __name__)
@@ -91,3 +91,19 @@ def nas_upload(folder):
         return Response(json.dumps({"error": "falha no upload" + str(error_msg)}), mimetype="application/json"), 500
 
     return Response(json.dumps({"status": "ok", "filename": f.filename}), mimetype="application/json"), 201
+
+@nas_bp.route("/api/nas/delete/<folder>/<path:filename>", methods=["DELETE"])
+def nas_delete(folder, filename):
+    username, password = _get_credentials()
+    if not username or not password:
+        return Response(json.dumps({"error": "não autenticado"}), mimetype="application/json")
+    ok, error_msg = delete_file(username, password, folder, filename)
+    if not ok:
+        return Response(
+            json.dumps({"error": "falha ao excluir: " + str(error_msg)}),
+            mimetype="application/json"
+        ), 500
+    return Response(
+        json.dumps({"status": "ok", "filename": filename}),
+        mimetype="application/json"
+    ), 200
