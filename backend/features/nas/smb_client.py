@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from smb.SMBConnection import SMBConnection
 import io
