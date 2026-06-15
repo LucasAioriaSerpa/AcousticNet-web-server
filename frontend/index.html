@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="css/panel.css" />
     <link rel="stylesheet" href="css/pages_transitions.css" />
     <link rel="stylesheet" href="css/page_header.css" />
+    <link rel="stylesheet" href="css/page_info.css">
     <link rel="stylesheet" href="css/graph.css" />
     <link rel="stylesheet" href="css/cards.css" />
     <link rel="stylesheet" href="css/NAS/file_list_NAS.css" />
@@ -34,7 +35,11 @@
         <span class="logo__text">AcousticNet</span>
       </div>
       <ul class="sidebar__menu">
-        <li class="menu__item active" data-page="dashboard">
+        <li class="menu__item active" data-page="info">
+          <span class="menu__icon">▸</span>
+          <span class="menu__label">Info</span>
+        </li>
+        <li class="menu__item" data-page="dashboard">
           <span class="menu__icon">▸</span>
           <span class="menu__label">Dashboard</span>
         </li>
@@ -55,8 +60,148 @@
 
     <!-- MAIN CONTENT -->
     <main class="main">
+      <!-- PAGE: INFO -->
+      <section class="page active" id="page-info">
+        <header class="page__header">
+          <div>
+            <p class="page__label">INFORMAÇÕES</p>
+            <h1 class="page__title">AcousticNet</h1>
+          </div>
+
+          <div class="header__badge">
+            Projeto Acadêmico
+          </div>
+        </header>
+
+        <div class="cards">
+          <div class="card card--highlight">
+            <p class="card__label">DISCIPLINA</p>
+            <p class="card__value card__value--sm">
+              Clínica de Tecnologia da Informação e Comunicação
+            </p>
+            <p class="card__sub">2026/2</p>
+          </div>
+
+          <div class="card">
+            <p class="card__label">PROFESSOR</p>
+            <p class="card__value card__value--sm">
+              Fabio Garcez Bettio
+            </p>
+            <p class="card__sub">Docente responsável</p>
+          </div>
+
+          <div class="card">
+            <p class="card__label">EQUIPE</p>
+            <p class="card__value card__value--sm">
+              6
+            </p>
+            <p class="card__sub">Integrantes do projeto</p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__header">
+            <p class="panel__title">SOBRE O PROJETO</p>
+          </div>
+
+          <div class="panel__body">
+            <p class="info__text">
+              O AcousticNet é uma plataforma centralizada de monitoramento e gestão de dispositivos IoT,
+              desenvolvida com foco em automação e integração de feed de vídeo em tempo real.
+              O sistema foi projetado para atuar como um gateway inteligente, permitindo o gerenciamento unificado de periféricos,
+              incluindo câmeras de segurança e sistemas de armazenamento em rede (NAS),
+              através de uma interface web responsiva e performática.
+            </p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__header">
+            <p class="panel__title">EQUIPE DE DESENVOLVIMENTO</p>
+          </div>
+
+          <div class="panel__body">
+            <div class="team__list">
+              <div class="team__member">
+                <span class="team__icon">◈</span>
+                <div>
+                  <p class="team__name">Anna Quézia dos Santos</p>
+                  <p class="team__role">Arquiteta de Documentação</p>
+                  <p class="team__role">Desenvolvedora</p>
+                </div>
+              </div>
+
+              <div class="team__member">
+                <span class="team__icon">◈</span>
+                <div>
+                  <p class="team__name">Flávia Cristina Fagundes</p>
+                  <p class="team__role">Arquiteta de Documentação</p>
+                  <p class="team__role">Desenvolvedora</p>
+                </div>
+              </div>
+
+              <div class="team__member">
+                <span class="team__icon">◈</span>
+                <div>
+                  <p class="team__name">Laura Rodrigues de Souza de Camargo</p>
+                  <p class="team__role">Arquiteta de Documentação</p>
+                  <p class="team__role">Desenvolvedora</p>
+                </div>
+              </div>
+
+              <div class="team__member">
+                <span class="team__icon">◈</span>
+                <div>
+                  <p class="team__name">Lucas Aioria Serpa</p>
+                  <p class="team__role">Arquiteto de Documentação</p>
+                  <p class="team__role">Desenvolvedor</p>
+                </div>
+              </div>
+
+              <div class="team__member">
+                <span class="team__icon">◈</span>
+                <div>
+                  <p class="team__name">Otávio Augusto Fermino da Silva</p>
+                  <p class="team__role">Arquiteto de Documentação</p>
+                  <p class="team__role">Desenvolvedor</p>
+                </div>
+              </div>
+
+              <div class="team__member">
+                <span class="team__icon">◈</span>
+                <div>
+                  <p class="team__name">Pedro Henrique Zakrzevski Costa</p>
+                  <p class="team__role">Arquiteto de Documentação</p>
+                  <p class="team__role">Desenvolvedor</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__header">
+            <p class="panel__title">TECNOLOGIAS UTILIZADAS</p>
+          </div>
+
+          <div class="panel__body">
+            <div class="tech__grid">
+              <span class="tech__tag">ESP32</span>
+              <span class="tech__tag">Nginx</span>
+              <span class="tech__tag">HTML</span>
+              <span class="tech__tag">CSS</span>
+              <span class="tech__tag">JavaScript</span>
+              <span class="tech__tag">Flask</span>
+              <span class="tech__tag">Docker</span>
+              <span class="tech__tag">SQLite</span>
+              <span class="tech__tag">OpenMediaVault</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- PAGE: DASHBOARD -->
-      <section class="page active" id="page-dashboard">
+      <section class="page" id="page-dashboard">
         <header class="page__header">
           <div>
             <p class="page__label">MONITORAMENTO</p>
@@ -333,7 +478,11 @@
 
     <!-- BOTTOMBAR NAV (MOBILE ONLY) -->
     <nav class="bottom-nav">
-      <div class="bottom-nav__item active" data-page="dashboard">
+      <div class="buttom-nav__item" data-page="info">
+        <span class="buttom-nav__icon"">ⓘ</span>
+        <span class="buttom-nav__label">Info</span>
+      </div>
+      <div class="bottom-nav__item" data-page="dashboard">
         <span class="bottom-nav__icon">◱</span>
         <span class="bottom-nav__label">Home</span>
       </div>

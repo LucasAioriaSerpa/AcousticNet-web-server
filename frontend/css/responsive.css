@@ -10,7 +10,7 @@
   }
   .main {
     margin-left: 0;
-    padding: 24px 20px 80px;
+    padding: 24px 20px 400px;
   }
   .page {
     left: 20px;
@@ -50,5 +50,57 @@
 
   .graph__wrapper {
     padding: 16px;
+  }
+}
+
+@media (max-width: 900px) {
+  .team__member {
+    padding: 10px;
+  }
+  .tech__grid {
+    gap: 8px;
+  }
+  .tech__tag {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .header__badge {
+    width: 100%;
+    text-align: center;
+  }
+  .info__text {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .team__member {
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .team__icon {
+    font-size: 16px;
+    margin-top: 2px;
+  }
+  .team__name {
+    font-size: 14px;
+  }
+  .team__role {
+    font-size: 11px;
+  }
+  .tech__grid {
+    gap: 6px;
+  }
+  .tech__tag {
+    width: 100%;
+    text-align: center;
+    font-size: 11px;
+    padding: 10px;
   }
 }

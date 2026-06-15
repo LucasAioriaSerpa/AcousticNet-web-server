@@ -45,3 +45,6 @@ docker run -d \
 
 echo -e "${GREEN}Deploy realizado com sucesso!${NC}"
 docker ps
+
+echo -e "${GREEN}Inicializando conexão com SSE220!${NC}"
+./go2rtc
