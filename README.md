@@ -8,7 +8,7 @@ Além de ter acesso ao NAS
 
 ## Servidor Web
 
-O computador desktop que está servindo como servidor web para este projeto é [insira modelo aqui] pela qual está com as seguintes configurações:
+O computador desktop que está servindo como servidor web tem as seguintes configurações:
 
 - SO: Ubuntu Xenial
 - CPU: Amd
@@ -22,7 +22,6 @@ O computador desktop que está servindo como servidor web para este projeto é [
 - Flask v0.12.2
 - nginx v1.18 - alpine
 - Docker v3.8
-  ...
 
 ## Setup/Reset/Update Docker
 
